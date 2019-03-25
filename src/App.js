@@ -11,10 +11,7 @@ class App extends Component {
           <header className="container">
             <nav className="navbar">
               <div className="navbar-brand">
-                <span className="navbar-item">PusherCoins</span>
-              </div>
-              <div className="navbar-end">
-                <a className="navbar-item" href="https://pusher.com" target="_blank" rel="noopener noreferre">Pusher.com</a>
+                <span className="navbar-item">akihiro</span>
               </div>
             </nav>
           </header>
