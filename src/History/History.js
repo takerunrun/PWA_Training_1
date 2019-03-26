@@ -112,8 +112,22 @@ class History extends Component {
             }));
     }
 
+    getPrice (day) {
+        let t = moment().subtract(day, 'days').unix();
+        axios.all([this.getETHPrices(t), this.getBTCPrices(t), this.getLTCPrices(t)])
+            .then(axios.spread((eth, btc, ltc) => {
+                let f = {
+                    date: moment.unix(t).format("MMM Do YYYY"),
+                    eth: eth.data.ETH.USD,
+                    btc: btc.data.BTC.USD,
+                    ltc: ltc.data.LTC.USD
+                }
+                this.setState({ todayprice: f});
+            }))
+    }
+
     componentWillMount () {
-        this.getTodayPrice();
+        this.getPrice(0);
         this.getYesterdayPrice();
         this.getTwoDaysPrice();
         this.getThreeDaysPrice();
